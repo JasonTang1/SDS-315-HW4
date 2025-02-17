@@ -2,20 +2,22 @@ library(tidyverse)
 library(mosaic)
 
 #Problem 1: Iron Bank
+set.seed(123)
 sim_flagged = do(100000)*nflip(n=2021, prob=0.024)
 
 ggplot(sim_flagged) + 
   geom_histogram(aes(x=nflip), binwidth=1)
 
-sum(sim_flagged >= 70)/100000 #p-value, 158 out of 100000 simulations had 70 or more flagged trades  
+sum(sim_flagged >= 70)/100000 #p-value, 213 out of 100000 simulations had 70 or more flagged trades  
 
 #Problem 2: Health Inspections
+set.seed(123)
 sim_health = do(100000)*nflip(n=50, prob=0.03)
 
 ggplot(sim_health) + 
   geom_histogram(aes(x=nflip), binwidth=1)
 
-sum(sim_health >= 8)/100000 #p-value, 11 of 100000 simulations had 8 or more health code violations in 50 inspections
+sum(sim_health >= 8)/100000 #p-value, 14 of 100000 simulations had 8 or more health code violations in 50 inspections
 
 #Problem 3: Evaluating Jury Selection for Bias
 expected_jur_proportions <- c(0.3,0.25,0.2,0.15,0.1)
